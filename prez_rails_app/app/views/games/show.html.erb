@@ -1,0 +1,18 @@
+<h1><%= @game.title %></h1>
+<br><br>
+<label>Game Players:</label>
+  <% @game.players.each do |player| %>
+  <%= link_to player.name, player_path(player) %>
+  <% end %>
+<br><br>
+<label>Selected Cards:</label>
+  <% @game.players.each do |player| %>
+  <h2><%= link_to player.card.name, card_path(player.card) %></h2>
+  <img src="<%= player.card.pic_url %>"><br>
+  <% end %>
+<br><br>
+
+<a href="<%= edit_game_path %>"><input type="submit" value="Edit this shit"></a>
+<br><br>
+<%= form_tag delete_all_the_things_path(@game), method: "delete"%>
+<%= submit_tag "Delete this shit" %>

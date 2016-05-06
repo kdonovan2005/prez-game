@@ -1,0 +1,24 @@
+<h1>Create a Card!</h1>
+  <%= form_for(@card) do |f| %>
+
+<label>Card Name:</label>
+  <%= f.text_field :name %>
+<br><br>
+<label>Description</label>
+  <%= f.text_area :description %>
+<br><br>
+<label>Picture URL</label>
+  <%= f.text_field :pic_url %>
+<br><br>
+<label>FAQ</label>
+  <%= f.text_area :faq %>
+<br><br>
+<label>Max number of this card:</label>
+  <%= f.text_field :frequency %>
+<br><br>
+<label>Choose the losing team</label>
+  <%= f.select :team, ((Card.good_bad_suicidal).map {|team| [team, team]}) %>
+<br><br>
+  <%= f.submit "This is Thriller!" %>
+
+<% end %>

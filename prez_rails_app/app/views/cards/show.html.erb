@@ -1,0 +1,22 @@
+<h1><%= @card.name %></h1>
+
+<img src="<%= @card.pic_url %>" alt="">
+
+<label>Card Description:</label>
+  <%= @card.description %>
+
+<label>FAQ</label>
+  <%= @card.faq %>
+
+<% if @card.frequency > 1 %>
+  <%= "There are #{@card.frequency} cards in the game." %>
+  <% else %>
+  <%= "There is #{@card.frequency} card in the game." %>
+<% end %>
+
+<label>Team</label>
+  <%= @card.team %>
+
+<a href="<%= edit_card_path %>"><input type="submit" value="Edit this shit"></a>
+<%= form_tag delete_card_path(@card), method: "delete"%>
+<%= submit_tag "Delete this shit" %>

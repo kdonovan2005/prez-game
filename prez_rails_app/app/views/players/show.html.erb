@@ -1,0 +1,20 @@
+<h1><%= @player.name %></h1>
+<br><br>
+<img src="<%= @player.pic_url %>" alt="">
+<br><br>
+<label>Tagline:</label>
+  <%= @player.tagline %>
+<br>
+<br>
+<% if @player.tot_wins > 1 %>
+  <%= "You have won #{@player.tot_wins} times." %>
+  <% elsif @player.tot_wins == 0%>
+  <%= "You have won #{@player.tot_wins} times. Check yo'self." %>
+  <% else %>
+  <%= "You have won #{@player.tot_wins} time. Get yo' shit together." %>
+<% end %>
+<br><br>
+<a href="<%= edit_player_path %>"><input type="submit" value="Edit this shit"></a>
+<br><br>
+<%= form_tag delete_bitch_path(@player), method: "delete"%>
+<%= submit_tag "Delete this shit" %>

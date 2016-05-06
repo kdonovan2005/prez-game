@@ -1,0 +1,31 @@
+<h1>Edit a Game!</h1>
+<%= form_for(@game) do |f| %>
+
+<label>Give your game a name (whatever you're thinking of; it's wrong):</label>
+  <%= f.text_field :title %>
+<br><br>
+
+<label>How many players?</label>
+  <%= f.select :num_players, ((2..(Card.all.count - 3)).map {|i| [i,i]}) %>
+<br>
+
+<label>Playas:</label>
+  <%= f.collection_check_boxes :player_ids, Player.all, :id, :name %>
+<br>
+
+<label><%= link_to "Forgot to create yo'self? (noobs always lose):", new_player_path %></label>
+<br>
+
+<label>Skill Level:</label>
+  <%= f.select :skill_lvl, (@game.skillz.map {|num, skill| [skill, num]}) %>
+<br>
+
+<label>Select Your Village Team (if you dare)</label>
+  <%= f.collection_check_boxes :card_ids, Card.all, :id, :name %>
+<br>
+
+<label><%= link_to "You think you can create your own cards?", new_card_path %></label>
+<br>
+
+<%= f.submit "This is Thriller!" %>
+<% end %>
